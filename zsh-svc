@@ -1,0 +1,4 @@
+zsh-svc()	{
+	export PS1='# '
+	unset RPROMPT
+}
