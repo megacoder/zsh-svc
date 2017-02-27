@@ -1,0 +1,18 @@
+function svc()	{
+	local	cmd verb args
+	if [ "$1" = "-c" -a $# -gt 1 ]; then
+		(
+			export PS1='# '
+			unset RPROMPT
+			export PATH=/sbin:/usr/sbin:${PATH}
+			shift
+			cmd=$(which "$1" | head -n1)
+			shift
+			echo "${PS1}${cmd} $@"
+			eval ${cmd} $@
+		)
+	else
+		export PS1='# '
+		unset RPROMPT
+	fi
+}
